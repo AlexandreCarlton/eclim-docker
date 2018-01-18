@@ -4,6 +4,10 @@ is_alive() {
   ps -o pid= -p $1
 }
 
+if [ ! -f ~/.eclimrc ]; then
+  cp .eclimrc ~/.eclimrc
+fi
+
 # Afford eclim enough time to start up (yes, it really takes that long).
 ./eclimd &
 server_pid=$!
