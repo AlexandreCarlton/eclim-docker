@@ -1,0 +1,11 @@
+sudo: required
+
+services:
+  - docker
+
+jobs:
+  include:
+    - stage: Build Docker image 'eclim'
+      script:
+        - make build tag
+        - make test

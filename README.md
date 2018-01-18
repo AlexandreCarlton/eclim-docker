@@ -1,5 +1,7 @@
 # eclim-docker
 
+[![Build Status](https://travis-ci.org/AlexandreCarlton/eclim-docker.svg?branch=master)](https://travis-ci.org/AlexandreCarlton/eclim-docker)
+
 A containerised [`eclim`](http://eclim.org), affording us Java completion in Vim
 without having to install [`eclipse`](https://www.eclipse.org/) or [`eclim`](http://eclim.org).
 
@@ -32,7 +34,7 @@ This helper script will read the values provided in [`~/.eclimrc`](.eclimrc),
 which must also be copied into our home directory:
 
 ```bash
-cp .eclimrc ~/.eclimrc
+$ cp .eclimrc ~/.eclimrc
 ```
 Need to tweak autoload/eclim/client/nailgun.vim:
 
