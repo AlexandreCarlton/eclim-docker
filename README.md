@@ -36,7 +36,6 @@ which must also be copied into our home directory:
 ```bash
 $ cp .eclimrc ~/.eclimrc
 ```
-Need to tweak autoload/eclim/client/nailgun.vim:
 
 Finally, we need a way for our vim instance to communicate with the server
 (which relies on an executable provided only by `eclim`).
@@ -44,7 +43,7 @@ As such, when building the docker image we modify the function used to get the
 `eclim` command by allowing the user to set the `g:EclimCommand` variable:
 
 ```vim
-function! eclim#clienet#nailgun#GetEclimCommand(home)
+function! eclim#client#nailgun#GetEclimCommand(home)
   " let command = a:home . 'bin/eclim'
   let command = get(g:, 'EclimCommand', a:home . 'bin/eclim')
   " ...
@@ -66,7 +65,7 @@ $ docker cp eclim:/usr/share/vim/vimfiles/eclim ~/.vim/plugged/eclim
 ```
 
 We must also have `vim` register this using a plugin manager (in this case,
-[`vim-plug`](`https://github.com/junegunn/vim-plug`)):
+[`vim-plug`](https://github.com/junegunn/vim-plug)):
 
 ```vim
 call plug#begin('~/.vim/plugged')
@@ -84,7 +83,7 @@ this manually).
 Finally, we must set the `g:EclimCommand` to the full path of the
 [`eclim`](eclim) wrapper script.
 This affords us access to the client executable we use to interact with our
-`eclim` server.
+`eclimd` server.
 
 # Upgrading
 
