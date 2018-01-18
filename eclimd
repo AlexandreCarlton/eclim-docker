@@ -22,6 +22,9 @@ get_eclimrc_value() {
 workspace="$(get_eclimrc_value osgi.instance.area.default)"
 port="$(get_eclimrc_value nailgun.server.port)"
 
+mkdir -p ~/.eclim
+mkdir -p ~/.eclipse
+
 docker run \
   --name="${CONTAINER_NAME}" \
   --rm \
