@@ -24,6 +24,7 @@ port="$(get_eclimrc_value nailgun.server.port)"
 
 mkdir -p ~/.eclim
 mkdir -p ~/.eclipse
+mkdir -p "${workspace}"
 
 docker run \
   --name="${CONTAINER_NAME}" \
