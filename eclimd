@@ -1,0 +1,37 @@
+#!/bin/sh
+
+CONTAINER_NAME=eclim
+ECLIM_VERSION=2.7.1
+
+if ! [ -f ~/.eclimrc ]; then
+  echo "Please copy across the .eclimrc file into $HOME" >&2
+  exit 1
+fi
+
+get_eclimrc_value() {
+  key=$1
+  cat ~/.eclimrc \
+  | sed \
+      --regexp-extended \
+      --silent \
+      "s:^${key}=(.*)$:\1:p"  \
+  | sed \
+    "s:@user.home:${HOME}:"
+}
+
+workspace="$(get_eclimrc_value osgi.instance.area.default)"
+port="$(get_eclimrc_value nailgun.server.port)"
+
+docker run \
+  --name="${CONTAINER_NAME}" \
+  --rm \
+  --publish="${port}:${port}" \
+  --user="$(id --user):$(id --group)" \
+  --volume=/etc/passwd:/etc/passwd:ro \
+  --volume=/etc/group:/etc/group:ro \
+  --volume="${HOME}/.eclipse:${HOME}/.eclipse" \
+  --volume="${workspace}:${workspace}" \
+  --volume="${HOME}/.eclim:${HOME}/.eclim" \
+  --volume="${HOME}/.eclimrc:${HOME}/.eclimrc" \
+  alexandrecarlton/eclim:${ECLIM_VERSION} \
+    "$@"

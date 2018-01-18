@@ -1,0 +1,12 @@
+# :vim:ft=jproperties:
+
+# Required properties (for our containerised setup):
+
+# Bind eclimd to all interfaces - necessary for a containerised instance.
+nailgun.server.host=0.0.0.0
+
+# Specifies the port nailgun / eclimd listens on for client requests.
+nailgun.server.port=9091
+
+# Specify the workspace
+osgi.instance.area.default=@user.home/eclipse-workspace

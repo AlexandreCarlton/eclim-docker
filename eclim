@@ -1,0 +1,9 @@
+#!/bin/sh
+
+CONTAINER_NAME=eclim
+ECLIM_VERSION=2.7.1
+
+docker exec \
+  "$CONTAINER_NAME" \
+    "/usr/lib/eclipse/plugins/org.eclim_${ECLIM_VERSION}/bin/eclim" \
+    "$@"
