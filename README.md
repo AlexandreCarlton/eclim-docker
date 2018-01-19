@@ -27,7 +27,7 @@ Unlike [`YouCompleteMe`](https://github.com/Valloric/YouCompleteMe), this
 server is only launched once, albeit manually:
 
 ```bash
-$ ./eclim [--debug]
+$ ./eclimd [--debug]
 ```
 
 This helper script will read the values provided in [`~/.eclimrc`](.eclimrc),
@@ -39,7 +39,7 @@ $ cp .eclimrc ~/.eclimrc
 
 Finally, we need a way for our vim instance to communicate with the server
 (which relies on an executable provided only by `eclim`).
-As such, when building the docker image we modify the function used to get the
+The docker image build process modifies the vim function used to get the
 `eclim` command by allowing the user to set the `g:EclimCommand` variable:
 
 ```vim
